@@ -15,7 +15,6 @@ class AddWords extends StatefulWidget {
 
 class _AddWordsState extends State<AddWords> {
   final _formKey = GlobalKey<FormState>();
-  String word,mean;
   TextEditingController _wordController= TextEditingController();
   TextEditingController _meanController= TextEditingController();
   FlutterTtsImproved tts = FlutterTtsImproved();
@@ -44,7 +43,6 @@ class _AddWordsState extends State<AddWords> {
 //                  initialValue: word ?? '',
                   onChanged: (val){
                     setState(() {
-                      word = val.trim();
                     });
                   },
                   textAlign: TextAlign.center,
@@ -65,11 +63,9 @@ class _AddWordsState extends State<AddWords> {
                   tooltip: 'ترجمة قوقل',
                   onPressed: (){
                     final translator = GoogleTranslator();
-                    translator.translate(word, to: language).then((onValue){
+                    translator.translate(_wordController.text, to: language).then((onValue){
                           setState(() {
-
                             _meanController.text = onValue.text;
-                            mean = onValue.text;
                           });
                     });
 
@@ -80,9 +76,8 @@ class _AddWordsState extends State<AddWords> {
 
                   controller: _meanController,
                  // initialValue: mean ?? '',
-                  onSaved: (val){
+                  onChanged: (val){
                     setState(() {
-                      mean = val.trim();
                     });
                   },
                   textAlign: TextAlign.center,
@@ -109,7 +104,7 @@ class _AddWordsState extends State<AddWords> {
                 SizedBox(height: 20.0,),
                 FlatButton(
                   onPressed:  ()  {
-                    AddWordFuture(word, mean, language).then((value){
+                    AddWordFuture(_wordController.text, _meanController.text, language).then((value){
 
                       if(value=='success'){
                         showToastMessage('تم اضافة الكلمة بنجاح');
@@ -117,8 +112,7 @@ class _AddWordsState extends State<AddWords> {
                           _wordController.clear();
                           _meanController.clear();
 
-                          word='';
-                          mean='';
+
                         });
                       } else {
                         showToastMessage('حدث خطأ ربما الكلمة مكررة');

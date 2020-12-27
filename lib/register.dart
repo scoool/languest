@@ -19,8 +19,9 @@ class _SingUpState extends State<SingUp> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
 
+      appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Text('تسجيل جديد'),
         actions: <Widget>[
           IconButton(

@@ -17,10 +17,10 @@ class Game extends StatefulWidget {
   _GameState createState() => _GameState();
 }
 
+
 class _GameState extends State<Game> {
 //  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey =
 //  GlobalKey<RefreshIndicatorState>();
-
   final Map<String, bool> score = {};
   List<Words> _words ;
   Map myMap ;
@@ -34,6 +34,7 @@ class _GameState extends State<Game> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     init();
 
   }
@@ -105,18 +106,23 @@ class _GameState extends State<Game> {
                     crossAxisAlignment: CrossAxisAlignment.end,
 
                     children: myMap?.keys?.map((f){
+
                       return Draggable<String>(
+                        maxSimultaneousDrags: 1,
+                        feedbackOffset: Offset.zero,
                         data: f,
                         child: ClassWords(text:score[f] == true ? '' : f),
-                        feedback: ClassWords(text: f,),
-                        childWhenDragging: ClassWords( text:''),
+                        feedback: ClassWords(text: f),
+
+                        childWhenDragging: Container(width: 150,height: 50,),
+
                         onDragCompleted: (){
+
                           if (score[f] == true){
                             setState(() {
                               counter +=3;
                             });
                             _audio.play('good_job.mp3');
-
                           }
                         },
                         onDragEnd: (result){
@@ -197,4 +203,5 @@ class _GameState extends State<Game> {
   }
 
 }
+
 

@@ -7,16 +7,17 @@ class ClassWords extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.black87,
+      color: Colors.grey[700],
 
       child: Container(
+
         alignment:Alignment.center,
         height: 50,
         width: 150,
 
         padding: EdgeInsets.all(2.0),
         child: Text(text,
-          style: TextStyle(fontSize: 18, color: Colors.white,  )),
+            style: TextStyle(fontSize: 18, color: Colors.white,  )),
       ),
     );
   }

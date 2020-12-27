@@ -43,7 +43,8 @@ class _LoginState extends State<Login> {
     final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     // Global.isLoggedIn = false
 
-    return Container(
+    return WillPopScope(
+      onWillPop: () async => false,
 
       child: Scaffold(
         key: _scaffoldKey,

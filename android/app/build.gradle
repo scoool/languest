@@ -12,12 +12,13 @@ if (flutterRoot == null) {
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-if (flutterVersionCode == null) { flutterVersionCode = '1'
+if (flutterVersionCode == null) {
+    throw new GradleException("versionCode not found. Define flutter.versionCode in the local.properties file.")
 }
 
 def flutterVersionName = localProperties.getProperty('flutter.versionName')
 if (flutterVersionName == null) {
-    flutterVersionName = '1.0'
+    throw new GradleException("versionName not found. Define flutter.versionName in the local.properties file.")
 }
 
 apply plugin: 'com.android.application'
@@ -48,8 +49,8 @@ android {
         applicationId "com.jeebzoon.langtest"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 7
-        versionName "2.0"
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }

@@ -148,14 +148,14 @@ class _WordListState extends State<WordList> {
                     ),
                     DataCell(
                         Container(
-                          width: 20,
+                          width: 30,
                           child: IconButton(
                             icon: Icon(Icons.edit),
                             color: Colors.deepOrange,
 
                             onPressed: (){
-                                Navigator.push(context,
-                                    MaterialPageRoute(builder:(context) => EditWords(item.word, item.mean) ));
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder:(context) => EditWords(item.word, item.mean) ));
 
 //    if (user_role == 'admin'){
 //    } else {
@@ -168,11 +168,15 @@ class _WordListState extends State<WordList> {
 
                     ),
                     DataCell(
-                        IconButton(
-                          hoverColor: Colors.red,
-                          color: Colors.deepOrange,
-                          icon: Icon(Icons.delete),
-                          onPressed: (){
+                      
+                        Container(
+                          margin: EdgeInsets.all(0),
+                          width: 30,
+                          child: IconButton(
+                            hoverColor: Colors.red,
+                            color: Colors.deepOrange,
+                            icon: Icon(Icons.delete),
+                            onPressed: (){
                               DeleteWordFuture(item.word, item.mean).then((v){
 
                                 showToastMessage('تم الحذف بنجاح');
@@ -187,7 +191,8 @@ class _WordListState extends State<WordList> {
 //
 //                            }
 
-                          },
+                            },
+                          ),
                         )
                     )
                   ]

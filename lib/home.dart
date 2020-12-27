@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:langtest/games/game.dart';
+import 'package:langtest/games/matching.dart';
 import 'package:langtest/games/voice_to_spell.dart';
 import 'package:langtest/points_report.dart';
 import 'package:langtest/games/puzzle_word.dart';
@@ -16,8 +16,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  // int _wordcount = 0;
-  // String _selectedvalue='';
 
   @override
   Widget build(BuildContext context) {
@@ -73,6 +71,7 @@ class _HomeState extends State<Home> {
 
               SizedBox(height: 20.0),
               RaisedButton(
+                highlightColor: Colors.green,
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -80,10 +79,10 @@ class _HomeState extends State<Home> {
                   children: <Widget>[
                     Text(
                       'توصيل الكلمات',
-                      style: myTextStyle.copyWith(color: Colors.blue, fontSize: 25),),
+                      style: myTextStyle.copyWith( fontSize: 25),),
                     SizedBox(width: 10,),
                     Image(
-                      image: AssetImage('assets/matching2.jpg'),
+                      image: AssetImage('assets/matching.png'),
                       width: 50, height: 50,
 
                     )
@@ -106,6 +105,8 @@ class _HomeState extends State<Home> {
               SizedBox(height: 30.0),
 
               RaisedButton(
+                highlightColor: Colors.green,
+
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -138,11 +139,13 @@ class _HomeState extends State<Home> {
               SizedBox(height: 30.0),
 
               RaisedButton(
+                highlightColor: Colors.green,
                 child: Row(
+
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      'اسمع واكتب',
+                      'امـــلاء',
                       style: myTextStyle.copyWith(color: Colors.black,fontSize: 25),),
                     SizedBox(width: 20,),
                     Image(

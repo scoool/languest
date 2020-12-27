@@ -110,8 +110,10 @@ class _EditWordsState extends State<EditWords> {
                   FlatButton(
                     onPressed:  () {
 
-                      EditWordFuture(new_word ?? widget._word, new_mean?? widget._mean,widget._word, widget._mean).then((value){
-                        showToastMessage(value);
+                      EditWordFuture(_wordController.text, _meanController.text,widget._word, widget._mean).then((value){
+                        if (value == 'success'){
+                          showToastMessage('تم تعديل الكلمة بنجاح');
+                        }
                       });
 
                     },
